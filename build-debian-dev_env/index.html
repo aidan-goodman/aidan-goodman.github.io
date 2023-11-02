@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Aidan">
+    
+    <title>
+        
+            搭建 Debian 开发环境遇到的问题 |
+        
+        栖迟於一丘
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/GitHub.jpg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"aidan-goodman.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/GitHub.jpg","favicon":"/images/GitHub.jpg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/background.jpg","description":"栖迟於一丘，则天下不易其乐"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":true},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                栖迟於一丘
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">搭建 Debian 开发环境遇到的问题</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/GitHub.jpg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Aidan</span>
+                        
+                            <span class="author-label">Engineer</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2022-07-27 10:54:19
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Debian/">Debian</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"></script>
+<p> 前段时间将开发环境从 Kali 切换到 Debian，感觉还是精简一点好，为了开发便利性，安装了一部份开发必备的环境，虽然大部分程序都能用超级牛力的 <code>apt</code> 进行安装，但还是有些程序在安装过程中遇到了错误，这里记录一下 </p>
+<span id="more"></span>
+<p> 安装原则是这样的：</p>
+<ol>
+<li>apt 有的优先用 apt 进行安装（如：g++, gcc, git, golang, openjdk）</li>
+<li> 有 <code>.deb</code> 可用的优先使用（如：elasticsearch, nvim）</li>
+<li> 其他包管理工具可用的优先考虑（如：pip 可以按照 mycli, redis; node 可以安装 hexo）</li>
+<li> 压缩包安装的方式（如：kafka）</li>
+</ol>
+<blockquote>
+<p>PS: 当前软件源使用 debian-testing</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deb http://deb.debian.org/debian testing main</span><br><span class="line">deb http://deb.debian.org/debian testing-updates main</span><br><span class="line">deb http://security.debian.org/debian-security/ testing-security main</span><br></pre></td></tr></table></figure>
+<h2 id="docker"><a class="markdownIt-Anchor" href="#docker"></a> docker</h2>
+<h3 id="docker- 版本关系"><a class="markdownIt-Anchor" href="#docker- 版本关系"></a> docker 版本关系 </h3>
+<p> 刚开始学 docker 的时候，被 <code>docker.io</code>  <code>docker-io</code>  <code>docker-engine</code>  <code>docker-ce</code>  <code>docker-ee</code> 这些名词搞晕了，之所以有这么多名称，是由它的发展历史决定的 </p>
+<p><strong> 为什么会有 <code>docker.io</code>  <code>docker-io</code> 这种命名方式 </strong></p>
+<p> 在 Docker 技术出现之前，Linux 中已经有一个叫 docker 的工具，在 Linux 系统中软件名不能与 docker 重名，而且那个时候 Docker 的官网是 <a class="link"   target="_blank" rel="noopener" href="http://docker.io">docker.io<i class="fas fa-external-link-alt"></i></a>，所以，就在软件名称上加了 io 的后缀 </p>
+<p> 因此，在 Debian/Ubuntu 中就是 <code>docker.io</code> ，在 RedHat/CentOS 就是 <code>docker-io</code></p>
+<p><strong> 从 <code>docker.io</code> 到 <code>docker-engine</code> 命名 </strong></p>
+<p> 使用 <code>docker.io</code> 和 <code>docker-io</code> 为软件名，主要是前期的一段时间，后来随着 Docker 的发展，软件包名改成了 <code>docker-engine</code> ，名称达到了统一 </p>
+<p><strong> 大一统 </strong></p>
+<p> 后续 Docker 发展愈发火热，在征得同名软件作者的同意下，将 docker 更改为 wmdocker，Docker 容器的软件包名正式成了 docker</p>
+<p><strong> 后续 </strong></p>
+<p>Docker 发展到 1.13.1 版本后，Docker 公司把 Docker 分成了两种形式：</p>
+<ul>
+<li>docker-ce 社区版，免费 </li>
+<li>docker-ee 商业版，收费 </li>
+</ul>
+<p> 现在要安装最新版的 Docker 软件包，就是使用 docker-ce 这个名称了 </p>
+<p> 安装前一般需要卸载旧版本，也就是网上常见的一条命令 </p>
+<p><code>apt remove docker docker-engine docker.io</code></p>
+<h3 id="debian- 安装"><a class="markdownIt-Anchor" href="#debian- 安装"></a> Debian 安装 </h3>
+<p><code>docker.io</code> 包是 Debian/Ubuntu 从其官方仓库上提供的 docker 版本使用的名称。每个外部依赖项都是一个单独的包，并且将独立更新 </p>
+<p> 与官方版本差别并不大，兼容性日常使用应该可以忽略。考虑国内网络环境，直接安装 <a class="link"   target="_blank" rel="noopener" href="http://docker.io">docker.io<i class="fas fa-external-link-alt"></i></a> 从 apt 镜像源下载更新更快 </p>
+<h2 id="mariadb"><a class="markdownIt-Anchor" href="#mariadb"></a> MariaDB</h2>
+<p>MariaDB 是 Debian 数据库的默认选择，安装只需要一条命令 <code>sudo apt install mariadb-server</code></p>
+<p> 推荐安装之后将常用用户添加到 mariadb 组中， <code>sudo usermod -g mysql aidan</code></p>
+<h3 id="安全性"><a class="markdownIt-Anchor" href="# 安全性"></a> 安全性 </h3>
+<p>MariaDB 附带了一个脚本 mysql_secure_installation ，可以帮助您提高安装的安全性。在终端中运行 <code>sudo mysql_secure_installation</code></p>
+<p> 每个步骤都有详细解释，酌情选择即可，如果对安全比较在意全选 <code>Y</code></p>
+<p> 默认情况下， MariaDB root 用户使用 unix_socket 身份验证插件，该插件在调用 mysql 客户端工具时检查有效用户 ID</p>
+<p> 这意味着只有在 mysql 以系统 root 身份调用命令或将 sudo 添加到命令时，才能以 root 身份连接到 MariaDB 服务器 </p>
+<p> 为了提高安全性，建议保留默认的身份验证插件，并允许 root 用户仅通过 Unix 套接字进行身份验证。</p>
+<p> 如果要将根身份验证更改为经典身份验证，登录 MariaDB 服务器 <code>sudo mysql</code> 可以定义密码 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED VIA mysql_native_password;</span><br><span class="line">ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;your_root_passwd&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p> 后续可以使用 <code>mysql -u root -p</code> 进行登录 </p>
+<h3 id="远程登录"><a class="markdownIt-Anchor" href="# 远程登录"></a> 远程登录 </h3>
+<ol>
+<li> 修改 /etc/mysql/my.conf<br />
+注释掉 <code>bind-address = 127.0.0.1</code> 或者改为 <code>bind-address = 0.0.0.0</code></li>
+<li> 为远程登录用户赋予权限 <br />
+<code>grant all privileges on *.* to 'root'@'%' identified by 'password' with grant option;</code><br />
+<code>flush privileges;</code></li>
+</ol>
+<h2 id="带进度条的复制和移动"><a class="markdownIt-Anchor" href="# 带进度条的复制和移动"></a> 带进度条的复制和移动 </h2>
+<p><a class="link"   target="_blank" rel="noopener" href="https://github.com/jarun/advcpmv">advcpmv<i class="fas fa-external-link-alt"></i></a></p>
+<hr />
+<blockquote>
+<p> 参考文章：<br />
+<a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/305572519">https://zhuanlan.zhihu.com/p/305572519<i class="fas fa-external-link-alt"></i></a><br />
+<a class="link"   target="_blank" rel="noopener" href="https://z.itpub.net/article/detail/CF3376ECFEA0A659D48576FEEB954192">https://z.itpub.net/article/detail/CF3376ECFEA0A659D48576FEEB954192<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：搭建 Debian 开发环境遇到的问题</li>
+        <li>本文作者：Aidan</li>
+        <li>创建时间：2022-07-27 10:54:19</li>
+        <li>
+            本文链接：https://aidanblog.top/build-debian-dev_env/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/mysql-export-csv/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">mysql 导出 csv 文件（非常规）</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/work-three_level-labels/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">工作中遇到的三级标签处理</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script 
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script >
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: 'ba3b48819b578103a5dd',
+                    clientSecret: 'ae3935801875ec26564ef58a21b754a0ac3e1627',
+                    repo: 'aidan-goodman.github.io',
+                    owner: 'aidan-goodman',
+                    admin: ['aidan-goodman'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('false') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2021</span>&nbsp;-&nbsp;
+            
+            2023&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a target="_blank" rel="noopener" href="https://aidanblog.top/about/">Aidan</a>
+        </div>
+        
+        
+    </div>
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker"><span class="nav-text"> docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-%20%E7%89%88%E6%9C%AC%E5%85%B3%E7%B3%BB"><span class="nav-text"> docker 版本关系 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#debian-%20%E5%AE%89%E8%A3%85"><span class="nav-text"> Debian 安装 </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mariadb"><span class="nav-text"> MariaDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="nav-text"> 安全性 </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95"><span class="nav-text"> 远程登录 </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A6%E8%BF%9B%E5%BA%A6%E6%9D%A1%E7%9A%84%E5%A4%8D%E5%88%B6%E5%92%8C%E7%A7%BB%E5%8A%A8"><span class="nav-text"> 带进度条的复制和移动 </span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>
